@@ -20,7 +20,7 @@ def Start():
         file_path = os.path.join(path, f"{file}{extetioin}")
         
         with open(file_path, 'w', encoding='utf-8') as arquivo:
-            print(f"File: {file}")
+            print(f"File: {file, extetioin}")
             arquivo.write(MESAGE_SCRIPT)
     
     print(f"Todos os arquivos foram criados com sucesso no diretório '{path}'.")
