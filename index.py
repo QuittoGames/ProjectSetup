@@ -1,9 +1,18 @@
-from config import FILES_PROGETS, FILE_EXTENSIONS, DIRETORIO, MESAGE_SCRIPT
+from config import FILES_PROGETS, FILE_EXTENSIONS, DIRETORIO, MESAGE_SCRIPT,TOOLS_CODE_BASE
 import os
+import platform
+
+def clear_screen():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
 
 def Start():
-    Folder_Name = input("Digite o nome da pasta: ")
-    extetioin = input("Digite a extensão do seu projeto (por exemplo, .py): ")
+    clear_screen()
+    Folder_Name = input("Digite o nome da pasta: ").strip()
+    extetioin = input("Digite a extensão do seu projeto (por exemplo, .py): ").strip()
     
     if extetioin not in FILE_EXTENSIONS:
         print("Extensão não reconhecida!")
@@ -21,6 +30,8 @@ def Start():
         
         with open(file_path, 'w', encoding='utf-8') as arquivo:
             print(f"File: {file, extetioin}")
+            if file == "tool":
+                arquivo.write(TOOLS_CODE_BASE)
             arquivo.write(MESAGE_SCRIPT)
     
     print(f"Todos os arquivos foram criados com sucesso no diretório '{path}'.")
