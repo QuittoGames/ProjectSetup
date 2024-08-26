@@ -12,7 +12,7 @@ def clear_screen():
         os.system('clear')
 
 
-def Start():
+def Start(Code_Base_On):
     clear_screen()
     Folder_Name = input("Digite o nome da pasta: ").strip()
     extetioin = input("Digite a extensão do seu projeto (por exemplo, .py): ").strip()
@@ -23,8 +23,11 @@ def Start():
     
     if extetioin not in FILE_EXTENSIONS:
         print("Extensão não reconhecida!")
-        Start()
+        Start(Code_Base_On)
         return  # Adiciona return para evitar execução adicional após a chamada recursiva
+
+    if extetioin != ".py":
+        Code_Base_On = False
 
     path = os.path.join(DIRETORIO, Folder_Name)
     
@@ -84,7 +87,7 @@ def Config_Admin():
             return
             
     
-    def Diretory_Manege():
+    def Diretory_Manege(DIRETORIO):
         clear_screen()
         print(f"Diretorio: {DIRETORIO}")
         print("1. Alterar Diretorio")
@@ -151,11 +154,11 @@ def Config_Admin():
     elif command == "2":
         Mesage_Code()
     elif command == "3":
-        Diretory_Manege()
+        Diretory_Manege(DIRETORIO= DIRETORIO)
     elif command == "4":
         Files_Mange()
     elif command == "5":
-        Start()
+        Start(Code_Base_On=Code_Base_On)
         return
     else:
         print("Comando Nao pode ser idetificado!")
@@ -164,4 +167,4 @@ def Config_Admin():
     
 
 if __name__ == "__main__":
-    Start()
+    Start(Code_Base_On=Code_Base_On)

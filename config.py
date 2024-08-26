@@ -1,6 +1,6 @@
 FILES_PROGETS = ["index","data","tool"]
 
-DIRETORIO = "D:\ProjetosDev\ProjetosPython"
+DIRETORIO = r"D:\ProjetosDev\ProjetosPython"
 
 MESAGE_SCRIPT = "#Project created successfully!"
 
