@@ -1,6 +1,14 @@
 FILES_PROGETS = ["index","data","tool"]
 
+FILES_PROGETS_WEB = {
+    "index": ".html",
+    "style": ".css",
+    "js": ".js"
+}
+
 DIRETORIO = r"D:\ProjetosDev\ProjetosPython"
+
+DIRETORIO_WEB = r"D:\ProjetosDev\Sites"
 
 MESAGE_SCRIPT = "#Project created successfully!"
 
@@ -87,4 +95,5 @@ FILE_EXTENSIONS = [
     ".matlab", # MATLAB
     ".maxmsp", # Max/MSP
     ".dsp",  # Digital Signal Processing
+    ".site",
 ]

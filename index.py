@@ -1,4 +1,4 @@
-from config import FILES_PROGETS, FILE_EXTENSIONS, DIRETORIO, MESAGE_SCRIPT,TOOLS_CODE_BASE
+from config import FILES_PROGETS, FILE_EXTENSIONS, DIRETORIO, MESAGE_SCRIPT,TOOLS_CODE_BASE,FILES_PROGETS_WEB,DIRETORIO_WEB
 import os
 import platform
 from time import sleep
@@ -19,6 +19,9 @@ def Start(Code_Base_On):
 
     if extetioin == ".config" or extetioin == ".c":
         Config_Admin()
+        return
+    elif extetioin == ".site":
+        Web_Progect(Folder_Name=Folder_Name)
         return
     
     if extetioin not in FILE_EXTENSIONS:
@@ -46,21 +49,40 @@ def Start(Code_Base_On):
     
     print(f"Todos os arquivos foram criados com sucesso no diretório '{path}'.")
 
+def Web_Progect(Folder_Name):
+    path = os.path.join(DIRETORIO_WEB, Folder_Name)
+
+    os.makedirs(path, exist_ok=True)
+
+    for file, extetioin in FILES_PROGETS_WEB.items():
+        file_path = os.path.join(path, f"{file}{extetioin}")
+        
+        with open(file_path, 'w', encoding='utf-8') as arquivo:
+            print(f"File: {file, extetioin}")
+
+    print(f"Todos os arquivos foram criados com sucesso no diretório '{path}'.")
+    
 def Config_Admin():
     clear_screen()
-    def Codes_Bases():
+    def Codes_Bases(Code_Base_On):
         def Add_In_Code_Base(code):
             TOOLS_CODE_BASE + code 
+            Config_Admin()
+            return
 
         print(f"Code Base tool.py: {TOOLS_CODE_BASE}")
         print("1. Add in Code Base")
         print("2. Remove in Code Base")
+        print("3. Exit")
         c = input("Digite Sua Escolha: ")
         if c == "1":
             code = input("Digite Seu Code: ")
             Add_In_Code_Base(code=code)
         elif c == "2":
             Code_Base_On = False
+            Config_Admin()
+            return
+        elif c == "3":
             Config_Admin()
             return
         else:
@@ -150,7 +172,7 @@ def Config_Admin():
     command = input("Digite Sua Opiçao: ")
 
     if command == "1":
-        Codes_Bases()
+        Codes_Bases(Code_Base_On)
     elif command == "2":
         Mesage_Code()
     elif command == "3":
