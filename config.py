@@ -6,7 +6,7 @@ FILES_PROGETS_WEB = {
     "js": ".js"
 }
 
-DIRETORIO = r"D:\ProjetosDev\ProjetosPython"
+DIRETORIO = r"C:\Users\gusta\Downloads\Projects\GerminareTECH\Semana6"
 
 DIRETORIO_WEB = r"D:\ProjetosDev\Sites"
 
@@ -96,4 +96,5 @@ FILE_EXTENSIONS = [
     ".maxmsp", # Max/MSP
     ".dsp",  # Digital Signal Processing
     ".site",
+    ".dj",
 ]

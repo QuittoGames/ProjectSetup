@@ -2,7 +2,9 @@ from config import FILES_PROGETS, FILE_EXTENSIONS, DIRETORIO, MESAGE_SCRIPT,TOOL
 import os
 import platform
 from time import sleep
+from tool import tool
 
+OS = tool.Verify_OS()
 Code_Base_On = True
 
 def clear_screen():
@@ -10,7 +12,6 @@ def clear_screen():
         os.system('cls')
     else:
         os.system('clear')
-
 
 def Start(Code_Base_On):
     clear_screen()
@@ -23,7 +24,10 @@ def Start(Code_Base_On):
     elif extetioin == ".site":
         Web_Progect(Folder_Name=Folder_Name)
         return
-    
+    elif extetioin == ".dj":
+        Django_Project(Folder_Name=Folder_Name)
+        extetioin = ".py"
+
     if extetioin not in FILE_EXTENSIONS:
         print("Extensão não reconhecida!")
         Start(Code_Base_On)
@@ -61,6 +65,21 @@ def Web_Progect(Folder_Name):
             print(f"File: {file, extetioin}")
 
     print(f"Todos os arquivos foram criados com sucesso no diretório '{path}'.")
+
+def Django_Project(Folder_Name):
+    try:
+        if not tool.Install_Django():
+            Start()
+            return
+        
+        os.system(f"django-admin startproject {Folder_Name}")
+        sleep(1)
+        print(f"Projeto Criado Com Susseso! Project Name: {Folder_Name}")
+    except:
+        print("Erro Al Criar Projeto! ")
+        sleep(2)
+        Start()
+        return
     
 def Config_Admin():
     clear_screen()
